@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="id.ac.ukdw.fti.rpl.Gasken.AppTest" time="0.011" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\MSI\RPL\TugasAkhir\tugas-akhir-rpl\target\test-classes;C:\Users\MSI\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-controls\12.0.2\javafx-controls-12.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-graphics\12.0.2\javafx-graphics-12.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-base\12.0.2\javafx-base-12.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-fxml\12.0.2\javafx-fxml-12.0.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://openjdk.java.net/"/>
+    <property name="user.timezone" value="Asia/Bangkok"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.12\bin"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\MSI\AppData\Local\Temp\surefire13562949870234698911 2021-09-18T22-14-02_437-jvmRun1 surefire14790982619842672040tmp surefire_03638206468420619624tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\MSI\RPL\TugasAkhir\tugas-akhir-rpl\target\test-classes;C:\Users\MSI\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-controls\12.0.2\javafx-controls-12.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-graphics\12.0.2\javafx-graphics-12.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-base\12.0.2\javafx-base-12.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-fxml\12.0.2\javafx-fxml-12.0.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\MSI"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="jdk.module.path" value="C:\Users\MSI\RPL\TugasAkhir\tugas-akhir-rpl\target\classes;C:\Users\MSI\.m2\repository\org\openjfx\javafx-controls\12.0.2\javafx-controls-12.0.2-win.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-graphics\12.0.2\javafx-graphics-12.0.2-win.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-base\12.0.2\javafx-base-12.0.2-win.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-fxml\12.0.2\javafx-fxml-12.0.2-win.jar;C:\Users\MSI\.m2\repository\org\xerial\sqlite-jdbc\3.32.3.2\sqlite-jdbc-3.32.3.2.jar"/>
+    <property name="java.version.date" value="2021-07-20"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-11.0.12"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\MSI\RPL\TugasAkhir\tugas-akhir-rpl"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\MSI\.m2\repository\org\apache\maven\surefire\surefire-booter\2.22.1\surefire-booter-2.22.1.jar;C:\Users\MSI\.m2\repository\org\apache\maven\surefire\surefire-api\2.22.1\surefire-api-2.22.1.jar;C:\Users\MSI\.m2\repository\org\apache\maven\surefire\surefire-logger-api\2.22.1\surefire-logger-api-2.22.1.jar;C:\Users\MSI\RPL\TugasAkhir\tugas-akhir-rpl\target\test-classes;C:\Users\MSI\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-controls\12.0.2\javafx-controls-12.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-graphics\12.0.2\javafx-graphics-12.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-base\12.0.2\javafx-base-12.0.2.jar;C:\Users\MSI\.m2\repository\org\openjfx\javafx-fxml\12.0.2\javafx-fxml-12.0.2.jar;C:\Users\MSI\.m2\repository\org\apache\maven\surefire\surefire-junit3\2.22.1\surefire-junit3-2.22.1.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.12+8-LTS-237"/>
+    <property name="user.name" value="MSI"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="18.9"/>
+    <property name="localRepository" value="C:\Users\MSI\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\MSI\AppData\Local\Temp\"/>
+    <property name="java.version" value="11.0.12"/>
+    <property name="user.dir" value="C:\Users\MSI\RPL\TugasAkhir\tugas-akhir-rpl"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-11.0.12\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\AdoptOpenJDK\jdk-11.0.10.9-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-8.0.282.8-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\apache-maven-3.8.2\bin;C:\Users\MSI\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\MSI\AppData\Local\Programs\Python\Python38\;C:\Users\MSI\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI\AppData\Local\Programs\Microsoft VS Code\bin;;."/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vm.version" value="11.0.12+8-LTS-237"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="testApp" classname="id.ac.ukdw.fti.rpl.Gasken.AppTest" time="0.001"/>
+</testsuite>
