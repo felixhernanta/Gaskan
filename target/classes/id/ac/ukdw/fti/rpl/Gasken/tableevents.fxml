@@ -22,7 +22,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="filterField" layoutX="181.0" layoutY="107.0" prefHeight="26.0" prefWidth="223.0" promptText="e.x : Cain kills Abel" />
-      <Label layoutX="101.0" layoutY="111.0" text="Cari events:" />
+      <TextField fx:id="filterField" layoutX="181.0" layoutY="107.0" prefHeight="26.0" prefWidth="223.0" promptText="e.x : Cain kills Abel / 2007 / !D" />
+      <Label layoutX="108.0" layoutY="111.0" prefHeight="18.0" prefWidth="58.0" text="Search :" />
    </children>
 </AnchorPane>

@@ -23,6 +23,9 @@ public class FXMLController implements Initializable{
     private TableView<Verse> tableVerses;
 
     @FXML
+    private TableColumn<Verse, String> AyatEvents;
+
+    @FXML
     private TableColumn<Verse, String> verseEvent;
 
     @FXML
@@ -37,6 +40,7 @@ public class FXMLController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         verses = Database.instance.getAllVerse();
+        AyatEvents.setCellValueFactory(new PropertyValueFactory<Verse, String>("AyatEvents1"));
         verseEvent.setCellValueFactory(new PropertyValueFactory<Verse, String>("verseEvent1"));
         verseDate.setCellValueFactory(new PropertyValueFactory<Verse, String>("verseDate1"));
         verseDuration.setCellValueFactory(new PropertyValueFactory<Verse,String>("verseDuration1"));
@@ -52,15 +56,20 @@ public class FXMLController implements Initializable{
                     
                 }
                 String lowerCase=newValue.toLowerCase();
-                
+
+                // mencari kesesuaian ayat bedasarkan event, jika true maka akan ditampilkan
+                if(verse.getAyatEvents1().toLowerCase().indexOf(lowerCase)!=-1){
+                    return true; 
+                }              
                 // mencari kesesuaian nama bedasarkan event, jika true maka akan ditampilkan
                 if(verse.getVerseEvent1().toLowerCase().indexOf(lowerCase)!=-1){
                     return true; 
                 }
-                // mencari kesesuaian nama bedasarkan event, jika true maka akan ditampilkan
+                // mencari kesesuaian tahun bedasarkan event, jika true maka akan ditampilkan
                 if(verse.getVerseDate1().toLowerCase().indexOf(lowerCase)!=-1){
                     return true; 
                 }
+                // mencari kesesuaian durasi bedasarkan event, jika true maka akan ditampilkan
                 if(verse.getVerseDuration1().toLowerCase().indexOf(lowerCase)!=-1){
                     return true; 
                 }

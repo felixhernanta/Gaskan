@@ -16,7 +16,7 @@ public class App extends Application
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("tableevents.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("tableevents3.fxml"));
 
         Scene scene = new Scene(root);
 

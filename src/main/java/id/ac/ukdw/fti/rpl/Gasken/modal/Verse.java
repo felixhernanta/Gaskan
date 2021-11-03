@@ -4,7 +4,12 @@ public class Verse {
     private String verseEvent1;
     private String verseDate1;
     private String verseDuration1;
+    private String AyatEvents1;
 
+    public void setAyatEvents1(String AyatEvents1){
+        this.AyatEvents1=AyatEvents1;
+    }
+    
     public void setVerseEvent1(String verseEvent1){
         this.verseEvent1=verseEvent1;
     }
@@ -17,13 +22,27 @@ public class Verse {
         this.verseDuration1=verseDuration1;
     }
 
+    public String getAyatEvents1(){
+        if (this.AyatEvents1==null) {
+            return "-";
+        }
+        else{
+            return this.AyatEvents1;
+        } 
+    }
+
     public String getVerseEvent1(){
-        return this.verseEvent1;
+        if (this.verseEvent1==null) {
+            return "-";
+        }
+        else{
+            return this.verseEvent1;
+        } 
     }
 
     public String getVerseDate1(){
         if (this.verseDate1==null) {
-            return "unknown";
+            return "-";
         }
         else{
             return this.verseDate1;
@@ -31,7 +50,12 @@ public class Verse {
     }
 
     public String getVerseDuration1(){
-        return this.verseDuration1;
+        if (this.verseDuration1==null) {
+            return "-";
+        }
+        else{
+            return this.verseDuration1;
+        }   
     }
 
 }
