@@ -1,4 +1,4 @@
-package id.ac.ukdw.fti.rpl.Gasken;
+package id.ac.ukdw.fti.rpl.Gaskan;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +16,7 @@ public class App extends Application
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("tableevents3.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("tableevents.fxml"));
 
         Scene scene = new Scene(root);
 

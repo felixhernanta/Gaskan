@@ -1,4 +1,4 @@
-package id.ac.ukdw.fti.rpl.Gasken;
+package id.ac.ukdw.fti.rpl.Gaskan;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -6,8 +6,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
-import id.ac.ukdw.fti.rpl.Gasken.database.Database;
-import id.ac.ukdw.fti.rpl.Gasken.modal.Verse;
+
+import id.ac.ukdw.fti.rpl.Gaskan.database.Database;
+import id.ac.ukdw.fti.rpl.Gaskan.modal.Verse;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;

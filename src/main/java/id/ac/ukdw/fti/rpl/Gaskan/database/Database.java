@@ -1,11 +1,13 @@
-package id.ac.ukdw.fti.rpl.Gasken.database;
+package id.ac.ukdw.fti.rpl.Gaskan.database;
 
 import java.sql.Statement;
+
+import id.ac.ukdw.fti.rpl.Gaskan.modal.Verse;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-import id.ac.ukdw.fti.rpl.Gasken.modal.Verse;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
