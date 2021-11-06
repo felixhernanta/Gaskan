@@ -1,4 +1,4 @@
-package id.ac.ukdw.fti.rpl.Gasken;
+package id.ac.ukdw.fti.rpl.Gaskan;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
