@@ -15,15 +15,16 @@ public class App extends Application
 
     @Override
     public void start(Stage stage) throws Exception {
-
-        Parent root = FXMLLoader.load(getClass().getResource("tableevents.fxml"));
-
+        Parent root = FXMLLoader.load(getClass().getResource("tableevents4.fxml"));
         Scene scene = new Scene(root);
-
-        stage.setTitle("Table Alkitab");
+        stage.setTitle("Table Alkitab");        
+        stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
     }
+
+
+
     public static void main( String[] args )
     {
         launch(args);

@@ -36,12 +36,12 @@ public class Database {
             ResultSet result = statement.executeQuery(querySelect);
             while (result.next()){
                 Verse verse= new Verse();
-                verse.setAyatEvents1(result.getString("verses"));
                 verse.setVerseEvent1(result.getString("title"));
-                verse.setVerseDate1(result.getString("startDate"));
-                verse.setVerseDuration1(result.getString("duration"));
+                verse.setVerseDate1(result.getInt("startDate"));
+                verse.setDuration1(result.getString("duration"));
                 verses.add(verse);
             }
+            result.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
