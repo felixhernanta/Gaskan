@@ -54,6 +54,8 @@ public class FXMLControllerTable implements Initializable{
 
     @FXML
     void kembaliKeDiagram(ActionEvent event) throws IOException {
+        verses.clear();
+        tableVerses.getItems().clear();
         Parent root = FXMLLoader.load(getClass().getResource("diagramevents.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene= new Scene(root);        
@@ -64,6 +66,7 @@ public class FXMLControllerTable implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         verses = Database.instance.getAllVerseTable();
+        System.out.println(verses.size());
         AyatEvents.setCellValueFactory(new PropertyValueFactory<VerseTable, String>("AyatEvents1"));
         verseEvent.setCellValueFactory(new PropertyValueFactory<VerseTable, String>("verseEvent1"));
         verseDate.setCellValueFactory(new PropertyValueFactory<VerseTable, String>("verseDate1"));

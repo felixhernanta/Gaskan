@@ -59,6 +59,8 @@ public class FXMLController implements Initializable{
 
     @FXML
     void kembaliKeTable(ActionEvent event) throws IOException{
+        verses.clear();
+        barChart.getData().clear();
         Parent root = FXMLLoader.load(getClass().getResource("tableevents.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene= new Scene(root);        
