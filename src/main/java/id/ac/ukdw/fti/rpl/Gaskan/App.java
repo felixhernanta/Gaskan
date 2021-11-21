@@ -1,5 +1,7 @@
 package id.ac.ukdw.fti.rpl.Gaskan;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,21 +14,19 @@ import javafx.stage.Stage;
  */
 public class App extends Application
 {
+    private static Scene scene;
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("tableevents4.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("diagramevents.fxml"));
         Scene scene = new Scene(root);
-        stage.setTitle("Table Alkitab");        
-        stage.setMaximized(true);
+        stage.setTitle("Event - Period Alkitab");        
         stage.setScene(scene);
         stage.show();
     }
 
-
-
     public static void main( String[] args )
     {
         launch(args);
-    }
+    }    
 }
