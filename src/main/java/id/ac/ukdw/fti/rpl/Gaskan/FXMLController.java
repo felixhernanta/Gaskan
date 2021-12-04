@@ -29,9 +29,8 @@ import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 
+public class FXMLController implements Initializable {
 
-public class FXMLController implements Initializable{
-    
     private ObservableList<Verse> verses = FXCollections.observableArrayList();
     private Scene scene;
     private Stage stage;
@@ -41,13 +40,13 @@ public class FXMLController implements Initializable{
 
     @FXML
     private Text Judul;
-    
+
     @FXML
     private TextField filterField;
 
     @FXML
-    private BarChart<Number,String> barChart;
-    
+    private BarChart<Number, String> barChart;
+
     @FXML
     private NumberAxis xAxis;
 
@@ -58,29 +57,28 @@ public class FXMLController implements Initializable{
     private Button kembaliKeTable;
 
     @FXML
-    void kembaliKeTable(ActionEvent event) throws IOException{
+    void kembaliKeTable(ActionEvent event) throws IOException {
         verses.clear();
         barChart.getData().clear();
         Parent root = FXMLLoader.load(getClass().getResource("tableevents.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene= new Scene(root);        
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         verses = Database.instance.getAllVerse();
-        XYChart.Series<Number,String> dataseries= new XYChart.Series<Number,String>();
+        XYChart.Series<Number, String> dataseries = new XYChart.Series<Number, String>();
         barChart.setLegendVisible(false);
 
-        int size=verses.size();
+        int size = verses.size();
         Map<String, String> map = new HashMap<String, String>();
-        
 
-        for(int i=size-1; i>1;i--){
-            dataseries.getData().add(new XYChart.Data<Number,String>(verses.get(i).getVerseDate1(),verses.get(i).getVerseEvent1()));
+        for (int i = size - 1; i > 1; i--) {
+            dataseries.getData().add(
+                    new XYChart.Data<Number, String>(verses.get(i).getVerseDate1(), verses.get(i).getVerseEvent1()));
             map.put(verses.get(i).getVerseEvent1(), verses.get(i).getDuration1());
 
         }
@@ -88,16 +86,21 @@ public class FXMLController implements Initializable{
         barChart.getData().add(dataseries);
 
         for (XYChart.Series<Number, String> hoover : barChart.getData()) {
-            for (XYChart.Data<Number,String> item: hoover.getData()) {
-                if(item.getXValue().toString().contains("-")){
-                    Tooltip.install(item.getNode(), new Tooltip(String.format("Start: %s"+" BC"+" , Event: %s , Duration: %s", item.getXValue().toString().substring(1,item.getXValue().toString().length()), item.getYValue(), map.get(item.getYValue())))); 
-                }else if(item.getXValue().equals(0)){
-                    Tooltip.install(item.getNode(), new Tooltip(String.format("Start: %s , Event: %s , Duration: %s", "unknown", item.getYValue(), map.get(item.getYValue())))); 
+            for (XYChart.Data<Number, String> item : hoover.getData()) {
+                if (item.getXValue().toString().contains("-")) {
+                    Tooltip.install(item.getNode(),
+                            new Tooltip(String.format("Start: %s" + " BC" + " , Event: %s , Duration: %s",
+                                    item.getXValue().toString().substring(1, item.getXValue().toString().length()),
+                                    item.getYValue(), map.get(item.getYValue()))));
+                } else if (item.getXValue().equals(0)) {
+                    Tooltip.install(item.getNode(), new Tooltip(String.format("Start: %s , Event: %s , Duration: %s",
+                            "unknown", item.getYValue(), map.get(item.getYValue()))));
+                } else {
+                    Tooltip.install(item.getNode(),
+                            new Tooltip(String.format("Start: %s" + " AD" + " , Event: %s , Duration: %s",
+                                    item.getXValue(), item.getYValue(), map.get(item.getYValue()))));
                 }
-                else{
-                    Tooltip.install(item.getNode(), new Tooltip(String.format("Start: %s"+" AD"+" , Event: %s , Duration: %s", item.getXValue(), item.getYValue(), map.get(item.getYValue()))));  
-                }  
             }
-        }  
-    }   
+        }
+    }
 }

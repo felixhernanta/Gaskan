@@ -25,8 +25,8 @@ import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 
-public class FXMLControllerTable implements Initializable{
-    
+public class FXMLControllerTable implements Initializable {
+
     private ObservableList<VerseTable> verses = FXCollections.observableArrayList();
     private Scene scene;
     private Stage stage;
@@ -53,12 +53,26 @@ public class FXMLControllerTable implements Initializable{
     private Button kembaliKeDiagram;
 
     @FXML
+    private Button kembaliKeMenu1;
+
+    @FXML
     void kembaliKeDiagram(ActionEvent event) throws IOException {
         verses.clear();
         tableVerses.getItems().clear();
         Parent root = FXMLLoader.load(getClass().getResource("diagramevents.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene= new Scene(root);        
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void kembaliKeMenu(ActionEvent event) throws IOException {
+        verses.clear();
+        tableVerses.getItems().clear();
+        Parent root = FXMLLoader.load(getClass().getResource("cover.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -66,50 +80,48 @@ public class FXMLControllerTable implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         verses = Database.instance.getAllVerseTable();
-        System.out.println(verses.size());
         AyatEvents.setCellValueFactory(new PropertyValueFactory<VerseTable, String>("AyatEvents1"));
         verseEvent.setCellValueFactory(new PropertyValueFactory<VerseTable, String>("verseEvent1"));
         verseDate.setCellValueFactory(new PropertyValueFactory<VerseTable, String>("verseDate1"));
-        verseDuration.setCellValueFactory(new PropertyValueFactory<VerseTable,String>("verseDuration1"));
+        verseDuration.setCellValueFactory(new PropertyValueFactory<VerseTable, String>("verseDuration1"));
         tableVerses.setItems(verses);
 
-        //menampilkan semua data
-        FilteredList<VerseTable> filteredData= new FilteredList<>(verses,searching->true);
+        // menampilkan semua data
+        FilteredList<VerseTable> filteredData = new FilteredList<>(verses, searching -> true);
 
         filterField.textProperty().addListener((Observable, oldValue, newValue) -> {
             filteredData.setPredicate(verse -> {
-                if (newValue==null || newValue.isEmpty()) {
+                if (newValue == null || newValue.isEmpty()) {
                     return true;
-                    
+
                 }
-                String lowerCase=newValue.toLowerCase();
+                String lowerCase = newValue.toLowerCase();
 
                 // mencari kesesuaian ayat bedasarkan event, jika true maka akan ditampilkan
-                if(verse.getAyatEvents1().toLowerCase().indexOf(lowerCase)!=-1){
-                    return true; 
-                }              
+                if (verse.getAyatEvents1().toLowerCase().indexOf(lowerCase) != -1) {
+                    return true;
+                }
                 // mencari kesesuaian nama bedasarkan event, jika true maka akan ditampilkan
-                if(verse.getVerseEvent1().toLowerCase().indexOf(lowerCase)!=-1){
-                    return true; 
+                if (verse.getVerseEvent1().toLowerCase().indexOf(lowerCase) != -1) {
+                    return true;
                 }
                 // mencari kesesuaian tahun bedasarkan event, jika true maka akan ditampilkan
-                if(verse.getVerseDate1().toLowerCase().indexOf(lowerCase)!=-1){
-                    return true; 
+                if (verse.getVerseDate1().toLowerCase().indexOf(lowerCase) != -1) {
+                    return true;
                 }
                 // mencari kesesuaian durasi bedasarkan event, jika true maka akan ditampilkan
-                if(verse.getVerseDuration1().toLowerCase().indexOf(lowerCase)!=-1){
-                    return true; 
-                }
-                else{
+                if (verse.getVerseDuration1().toLowerCase().indexOf(lowerCase) != -1) {
+                    return true;
+                } else {
                     return false;
                 }
             });
         });
-        // mengumpulkan filterlist untuk diurutkan 
-        SortedList<VerseTable> sortingData=new SortedList<>(filteredData);
+        // mengumpulkan filterlist untuk diurutkan
+        SortedList<VerseTable> sortingData = new SortedList<>(filteredData);
         // mengurutkan list pada tabel dan dikomparasi
         sortingData.comparatorProperty().bind(tableVerses.comparatorProperty());
         // menambahkan data yang terurut pada tabel
         tableVerses.setItems(sortingData);
-    }   
+    }
 }
