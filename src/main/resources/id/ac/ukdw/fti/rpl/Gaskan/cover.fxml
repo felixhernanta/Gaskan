@@ -26,7 +26,7 @@
       </Button>
       <ImageView fitHeight="317.0" fitWidth="312.0" layoutX="274.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../Users/Yoga%20Agastyar/Downloads/reading_books_icon_176864%20(1).png" />
+            <Image url="@reading_books_icon_176864%20(1).png" />
          </image>
       </ImageView>
    </children>
