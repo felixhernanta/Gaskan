@@ -9,6 +9,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 
@@ -38,6 +39,18 @@ public class FXMLController implements Initializable {
 
     @FXML
     private AnchorPane anchorPane;
+
+    @FXML
+    private Text Event;
+
+    @FXML
+    private Text Period;
+
+    @FXML
+    private Text Duration;
+
+    @FXML
+    private TextArea Ayat;
 
     @FXML
     private Text Judul;
@@ -73,7 +86,6 @@ public class FXMLController implements Initializable {
         try {
             String ayat=FXMLControllerTable.getAyat();
             String title=FXMLControllerTable.getEvent();
-            System.out.println(title);
             verses = Database.getAllVerse(ayat,title);
             XYChart.Series<Number, String> dataseries = new XYChart.Series<Number, String>();
             barChart.setLegendVisible(false);
@@ -82,32 +94,41 @@ public class FXMLController implements Initializable {
 
             dataseries.getData().add(new XYChart.Data<Number, String>(verses.get(0).getVerseDate1(), verses.get(0).getVerseEvent1()));
             map.put(verses.get(0).getVerseEvent1(), verses.get(0).getDuration1());
-
+            Event.setText("Event : "+verses.get(0).getVerseEvent1());
+            if(verses.get(0).getVerseDate1()<0){
+                Period.setText("Periode : "+Integer.toString(verses.get(0).getVerseDate1()).substring(1,Integer.toString(verses.get(0).getVerseDate1()).length())+" BC");
+            }
+            else if(verses.get(0).getVerseDate1()==0){
+                Period.setText("Periode : unknown");
+            }
+            else {
+                Period.setText("Periode : "+Integer.toString(verses.get(0).getVerseDate1()).substring(1,Integer.toString(verses.get(0).getVerseDate1()).length())+" AD");
+            }
+            Duration.setText("Durasi  : "+verses.get(0).getDuration1());
+            Ayat.setText(verses.get(0).getAyatEvents1());
             barChart.getData().add(dataseries);
+
+            for (XYChart.Series<Number, String> hoover : barChart.getData()) {
+                for (XYChart.Data<Number, String> item : hoover.getData()) {
+                    if (item.getXValue().toString().contains("-")) {
+                        Tooltip.install(item.getNode(),
+                                new Tooltip(String.format("Start: %s" + " BC" + " , Event: %s , Duration: %s",
+                                        item.getXValue().toString().substring(1, item.getXValue().toString().length()),
+                                        item.getYValue(), map.get(item.getYValue()))));
+                    } else if (item.getXValue().equals(0)) {
+                        Tooltip.install(item.getNode(), new Tooltip(String.format("Start: %s , Event: %s , Duration: %s",
+                                "unknown", item.getYValue(), map.get(item.getYValue()))));
+                    } else {
+                        Tooltip.install(item.getNode(),
+                                new Tooltip(String.format("Start: %s" + " AD" + " , Event: %s , Duration: %s",
+                                        item.getXValue(), item.getYValue(), map.get(item.getYValue()))));
+                    }
+                }
+            }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        
-
-        // for (XYChart.Series<Number, String> hoover : barChart.getData()) {
-        //     for (XYChart.Data<Number, String> item : hoover.getData()) {
-        //         if (item.getXValue().toString().contains("-")) {
-        //             Tooltip.install(item.getNode(),
-        //                     new Tooltip(String.format("Start: %s" + " BC" + " , Event: %s , Duration: %s",
-        //                             item.getXValue().toString().substring(1, item.getXValue().toString().length()),
-        //                             item.getYValue(), map.get(item.getYValue()))));
-        //         } else if (item.getXValue().equals(0)) {
-        //             Tooltip.install(item.getNode(), new Tooltip(String.format("Start: %s , Event: %s , Duration: %s",
-        //                     "unknown", item.getYValue(), map.get(item.getYValue()))));
-        //         } else {
-        //             Tooltip.install(item.getNode(),
-        //                     new Tooltip(String.format("Start: %s" + " AD" + " , Event: %s , Duration: %s",
-        //                             item.getXValue(), item.getYValue(), map.get(item.getYValue()))));
-        //         }
-        //     }
-        // }
     }
 }
