@@ -8,6 +8,7 @@ import id.ac.ukdw.fti.rpl.Gaskan.modal.VerseTable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,9 +16,9 @@ import javafx.collections.ObservableList;
 public class Database {
     final private String url="jdbc:sqlite:vizbible.sqlite";
     final private String querySelect="SELECT verses, title, startDate, duration FROM events";
-    ObservableList<Verse> verses=FXCollections.observableArrayList();
+    static ObservableList<Verse> verses=FXCollections.observableArrayList();
     ObservableList<VerseTable> verses1=FXCollections.observableArrayList();
-    private Connection connection = null;
+    private static Connection connection = null;
     public static Database instance= new Database();
 
     public Database(){
@@ -32,12 +33,15 @@ public class Database {
         return connection;
     }
 
-    public ObservableList<Verse> getAllVerse(){
+    public static ObservableList<Verse> getAllVerse(String ayat, String title) throws SQLException, ClassNotFoundException{
         try {  
+            // String querySelect1="SELECT verses, title, startDate, duration FROM events WHERE verses ='"+title+"'";
+            String querySelect1="SELECT verses, title, startDate, duration FROM events WHERE title LIKE '%"+title+"%'";
             Statement statement=connection.createStatement();
-            ResultSet result = statement.executeQuery(querySelect);
+            ResultSet result = statement.executeQuery(querySelect1);
             while (result.next()){
                 Verse verse= new Verse();
+                verse.setAyatEvents1(result.getString("verses"));
                 verse.setVerseEvent1(result.getString("title"));
                 verse.setVerseDate1(result.getInt("startDate"));
                 verse.setDuration1(result.getString("duration"));
@@ -49,6 +53,24 @@ public class Database {
         }
         return verses;
     }
+    // public ObservableList<Verse> getAllVerse(){
+    //     try {  
+    //         Statement statement=connection.createStatement();
+    //         ResultSet result = statement.executeQuery(querySelect1);
+    //         while (result.next()){
+    //             Verse verse= new Verse();
+    //             verse.setAyatEvents1(result.getString("verses"));
+    //             verse.setVerseEvent1(result.getString("title"));
+    //             verse.setVerseDate1(result.getInt("startDate"));
+    //             verse.setDuration1(result.getString("duration"));
+    //             verses.add(verse);
+    //         }
+    //         result.close();
+    //     } catch (Exception e) {
+    //         System.out.println(e.getMessage());
+    //     }
+    //     return verses;
+    // }
 
     public ObservableList<VerseTable> getAllVerseTable(){
         try {  

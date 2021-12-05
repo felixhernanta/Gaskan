@@ -4,6 +4,11 @@ public class Verse {
     private String verseEvent1;
     private int verseDate1;
     private String duration1;
+    private String AyatEvents1;
+
+    public void setAyatEvents1(String AyatEvents1){
+        this.AyatEvents1=AyatEvents1;
+    }
     
     public void setVerseEvent1(String verseEvent1){
         this.verseEvent1=verseEvent1;
@@ -15,6 +20,15 @@ public class Verse {
 
     public void setDuration1(String duration1){
         this.duration1=duration1;
+    }
+
+    public String getAyatEvents1(){
+        if (this.AyatEvents1==null) {
+            return "unknown";
+        }
+        else{
+            return this.AyatEvents1;
+        } 
     }
 
     public String getVerseEvent1(){

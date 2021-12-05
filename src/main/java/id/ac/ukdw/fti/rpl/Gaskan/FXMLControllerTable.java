@@ -21,6 +21,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
@@ -56,21 +57,34 @@ public class FXMLControllerTable implements Initializable {
     private Button kembaliKeMenu1;
 
     @FXML
-    void kembaliKeDiagram(ActionEvent event) throws IOException {
+    void kembaliKeMenu(ActionEvent event) throws IOException {
         verses.clear();
         tableVerses.getItems().clear();
-        Parent root = FXMLLoader.load(getClass().getResource("diagramevents.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("cover.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
+    private static String Ayat;
+    private static String Event;
+
+    public static String getAyat(){
+        return Ayat;
+    }
+
+    public static String getEvent(){
+        return Event;
+    }
+
     @FXML
-    void kembaliKeMenu(ActionEvent event) throws IOException {
+    void klikLine(MouseEvent event) throws IOException {
+        Ayat=tableVerses.getSelectionModel().getSelectedItem().getAyatEvents1();
+        Event=tableVerses.getSelectionModel().getSelectedItem().getVerseEvent1();
         verses.clear();
         tableVerses.getItems().clear();
-        Parent root = FXMLLoader.load(getClass().getResource("cover.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("diagramevents.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -9,15 +9,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.ac.ukdw.fti.rpl.Gaskan.FXMLControllerTable">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.ac.ukdw.fti.rpl.Gaskan.FXMLControllerTable">
    <children>
-      <TableView fx:id="tableVerses" layoutY="122.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="338.0" prefWidth="944.0" style="-fx-background-color: #ffffff; -fx-border-color: #94222d;">
+      <TableView fx:id="tableVerses" layoutY="122.0" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#klikLine" prefHeight="338.0" prefWidth="944.0" style="-fx-background-color: #ffffff; -fx-border-color: #94222d;">
         <columns>
             <TableColumn fx:id="AyatEvents" prefWidth="501.5999574661255" style="-fx-text-background-color: #000000;" text="Ayat" />
           <TableColumn fx:id="verseEvent" prefWidth="207.2000732421875" style="-fx-text-background-color: #000000;" text="Title" />
           <TableColumn fx:id="verseDate" prefWidth="138.4000244140625" style="-fx-text-background-color: #000000;" text="Start Date" />
             <TableColumn fx:id="verseDuration" prefWidth="91.2000732421875" style="-fx-text-background-color: #000000;" text="Duration" />
         </columns>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </TableView>
       <Text layoutX="341.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tabel Events - Period Alkitab" wrappingWidth="339.46014404296875">
          <font>
@@ -28,19 +31,12 @@
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font></TextField>
-      <Button fx:id="kembaliKeDiagram" blendMode="DARKEN" layoutX="772.0" layoutY="26.0" mnemonicParsing="false" onAction="#kembaliKeDiagram" prefHeight="39.0" prefWidth="142.0" style="-fx-background-color: #94222d;" text="Kembali Ke Diagram" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
       <Text layoutX="310.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search:" wrappingWidth="62.66015625">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Text>
-      <Button fx:id="kembaliKeMenu1" blendMode="DARKEN" layoutX="33.0" layoutY="30.0" mnemonicParsing="false" onAction="#kembaliKeMenu" prefHeight="39.0" prefWidth="142.0" style="-fx-background-color: #94222d;" text="Kembali Ke Menu" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="kembaliKeMenu1" blendMode="DARKEN" layoutX="769.0" layoutY="25.0" mnemonicParsing="false" onAction="#kembaliKeMenu" prefHeight="39.0" prefWidth="142.0" style="-fx-background-color: #94222d;" text="Kembali Ke Menu" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

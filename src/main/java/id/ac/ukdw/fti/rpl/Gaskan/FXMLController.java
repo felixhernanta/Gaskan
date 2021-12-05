@@ -14,6 +14,7 @@ import javafx.scene.control.Tooltip;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -68,39 +69,45 @@ public class FXMLController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        verses = Database.instance.getAllVerse();
-        XYChart.Series<Number, String> dataseries = new XYChart.Series<Number, String>();
-        barChart.setLegendVisible(false);
+    public void initialize(URL location, ResourceBundle resources) { 
+        try {
+            String ayat=FXMLControllerTable.getAyat();
+            String title=FXMLControllerTable.getEvent();
+            System.out.println(title);
+            verses = Database.getAllVerse(ayat,title);
+            XYChart.Series<Number, String> dataseries = new XYChart.Series<Number, String>();
+            barChart.setLegendVisible(false);
 
-        int size = verses.size();
-        Map<String, String> map = new HashMap<String, String>();
+            Map<String, String> map = new HashMap<String, String>();
 
-        for (int i = size - 1; i > 1; i--) {
-            dataseries.getData().add(
-                    new XYChart.Data<Number, String>(verses.get(i).getVerseDate1(), verses.get(i).getVerseEvent1()));
-            map.put(verses.get(i).getVerseEvent1(), verses.get(i).getDuration1());
+            dataseries.getData().add(new XYChart.Data<Number, String>(verses.get(0).getVerseDate1(), verses.get(0).getVerseEvent1()));
+            map.put(verses.get(0).getVerseEvent1(), verses.get(0).getDuration1());
 
+            barChart.getData().add(dataseries);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        barChart.getData().add(dataseries);
+        
 
-        for (XYChart.Series<Number, String> hoover : barChart.getData()) {
-            for (XYChart.Data<Number, String> item : hoover.getData()) {
-                if (item.getXValue().toString().contains("-")) {
-                    Tooltip.install(item.getNode(),
-                            new Tooltip(String.format("Start: %s" + " BC" + " , Event: %s , Duration: %s",
-                                    item.getXValue().toString().substring(1, item.getXValue().toString().length()),
-                                    item.getYValue(), map.get(item.getYValue()))));
-                } else if (item.getXValue().equals(0)) {
-                    Tooltip.install(item.getNode(), new Tooltip(String.format("Start: %s , Event: %s , Duration: %s",
-                            "unknown", item.getYValue(), map.get(item.getYValue()))));
-                } else {
-                    Tooltip.install(item.getNode(),
-                            new Tooltip(String.format("Start: %s" + " AD" + " , Event: %s , Duration: %s",
-                                    item.getXValue(), item.getYValue(), map.get(item.getYValue()))));
-                }
-            }
-        }
+        // for (XYChart.Series<Number, String> hoover : barChart.getData()) {
+        //     for (XYChart.Data<Number, String> item : hoover.getData()) {
+        //         if (item.getXValue().toString().contains("-")) {
+        //             Tooltip.install(item.getNode(),
+        //                     new Tooltip(String.format("Start: %s" + " BC" + " , Event: %s , Duration: %s",
+        //                             item.getXValue().toString().substring(1, item.getXValue().toString().length()),
+        //                             item.getYValue(), map.get(item.getYValue()))));
+        //         } else if (item.getXValue().equals(0)) {
+        //             Tooltip.install(item.getNode(), new Tooltip(String.format("Start: %s , Event: %s , Duration: %s",
+        //                     "unknown", item.getYValue(), map.get(item.getYValue()))));
+        //         } else {
+        //             Tooltip.install(item.getNode(),
+        //                     new Tooltip(String.format("Start: %s" + " AD" + " , Event: %s , Duration: %s",
+        //                             item.getXValue(), item.getYValue(), map.get(item.getYValue()))));
+        //         }
+        //     }
+        // }
     }
 }

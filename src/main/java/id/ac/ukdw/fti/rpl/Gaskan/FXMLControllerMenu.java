@@ -40,7 +40,6 @@ public class FXMLControllerMenu implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        verses = Database.instance.getAllVerse();
 
     }
 
