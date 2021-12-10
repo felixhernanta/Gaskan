@@ -33,9 +33,9 @@ public class Database {
         return connection;
     }
 
-    public static ObservableList<Verse> getAllVerse(String ayat, String title) throws SQLException, ClassNotFoundException{
+    public static ObservableList<Verse> getAllVerse(String title) throws SQLException, ClassNotFoundException{
         try {  
-            String querySelect1="SELECT verses, title, startDate, duration FROM events WHERE title LIKE '%"+title+"%' and verses LIKE '%"+ayat+"%'";
+            String querySelect1="SELECT verses, title, startDate, duration FROM events WHERE title LIKE '%"+title+"%'";
             Statement statement=connection.createStatement();
             ResultSet result = statement.executeQuery(querySelect1);
             while (result.next()){

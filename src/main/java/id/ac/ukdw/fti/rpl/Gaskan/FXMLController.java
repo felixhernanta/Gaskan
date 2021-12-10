@@ -84,9 +84,8 @@ public class FXMLController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) { 
         try {
-            String ayat=FXMLControllerTable.getAyat();
             String title=FXMLControllerTable.getEvent();
-            verses = Database.getAllVerse(ayat,title);
+            verses = Database.getAllVerse(title);
             XYChart.Series<Number, String> dataseries = new XYChart.Series<Number, String>();
             barChart.setLegendVisible(false);
 
