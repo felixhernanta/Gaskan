@@ -16,12 +16,14 @@ import javafx.scene.control.Tooltip;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
 import id.ac.ukdw.fti.rpl.Gaskan.database.Database;
 import id.ac.ukdw.fti.rpl.Gaskan.modal.Verse;
+import id.ac.ukdw.fti.rpl.Gaskan.modal.VerseAyat;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -34,6 +36,7 @@ import javafx.scene.Node;
 public class FXMLController implements Initializable {
 
     private ObservableList<Verse> verses = FXCollections.observableArrayList();
+    private ObservableList<VerseAyat> tampilayat1=FXCollections.observableArrayList();
     private Scene scene;
     private Stage stage;
 
@@ -51,6 +54,9 @@ public class FXMLController implements Initializable {
 
     @FXML
     private TextArea Ayat;
+
+    @FXML
+    private TextArea alkitab;
 
     @FXML
     private Text Judul;
@@ -73,6 +79,7 @@ public class FXMLController implements Initializable {
     @FXML
     void kembaliKeTable(ActionEvent event) throws IOException {
         verses.clear();
+        tampilayat1.clear();
         barChart.getData().clear();
         Parent root = FXMLLoader.load(getClass().getResource("tableevents.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -86,6 +93,7 @@ public class FXMLController implements Initializable {
         try {
             String title=FXMLControllerTable.getEvent();
             verses = Database.getAllVerse(title);
+            tampilayat1=Database.instance.getAllAyat();
             XYChart.Series<Number, String> dataseries = new XYChart.Series<Number, String>();
             barChart.setLegendVisible(false);
 
@@ -104,8 +112,23 @@ public class FXMLController implements Initializable {
                 Period.setText("Periode : "+Integer.toString(verses.get(0).getVerseDate1()).substring(1,Integer.toString(verses.get(0).getVerseDate1()).length())+" AD");
             }
             Duration.setText("Durasi  : "+verses.get(0).getDuration1());
-            Ayat.setText(verses.get(0).getAyatEvents1());
+            String eja=verses.get(0).getAyatEvents1();
+            Ayat.setText(eja.replaceAll(",", System.lineSeparator()));
             barChart.getData().add(dataseries);
+
+            ArrayList<String> isiayat=new ArrayList<String>();
+
+            for(int i=0; i<tampilayat1.size();i++){
+                if(verses.get(0).getAyatEvents1().contains(tampilayat1.get(i).getAyat())){
+                    isiayat.add(tampilayat1.get(i).getAyat()+" :\n"+tampilayat1.get(i).getTeks());
+                }   
+            }
+            String tampilayat=String.join("\n",isiayat);
+            // for(int i=0; i<isiayat.size();i++){
+            //       tampilayat=tampilayat+isiayat.get(i);
+            // }
+
+            alkitab.setText(tampilayat);
 
             for (XYChart.Series<Number, String> hoover : barChart.getData()) {
                 for (XYChart.Data<Number, String> item : hoover.getData()) {

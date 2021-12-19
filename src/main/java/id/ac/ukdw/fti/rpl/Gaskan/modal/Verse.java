@@ -10,6 +10,7 @@ public class Verse {
         this.AyatEvents1=AyatEvents1;
     }
     
+    
     public void setVerseEvent1(String verseEvent1){
         this.verseEvent1=verseEvent1;
     }
